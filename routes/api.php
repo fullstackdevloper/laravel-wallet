@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\userController;
-use App\Http\Controllers\Api\productController;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +16,11 @@ use App\Http\Controllers\Api\productController;
 |
 */
 
-Route::post('register', [userController::class, 'register']);
-Route::post('login', [userController::class, 'login']);
-Route::get('login',[userController::class,'login'])->name('login');
+Route::post('login', [AuthController::class, 'login']);
 Route::middleware('auth:api')->group( function () {
-    Route::post('addMoney', [userController::class, 'addMoney']);
-    Route::post('checkout', [productController::class, 'checkout']);
+    Route::post('addMoney', [UsersController::class, 'addMoneyToWallet']);
+    Route::post('buyCookie', [UsersController::class, 'buyCookie']);
 
 });
+
+

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\API;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CartRequest extends FormRequest
+class AddMoneyRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,10 +24,7 @@ class CartRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required',
-            'product_id' => 'required',
-            'qty' => 'required'
+            'amount' => 'required|numeric|gte:3|lte:100',
         ];
     }
-
 }

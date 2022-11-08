@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\API;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class userRequest extends FormRequest
+class LoginUserRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,9 +24,8 @@ class userRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required',
-            'amount' => 'required|numeric|between:3,100|regex:/^\d+(\.\d{1,2})?$/'
+            'email' => 'required|email',
+            'password' => 'required'
         ];
     }
-
 }
